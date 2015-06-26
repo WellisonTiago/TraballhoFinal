@@ -181,13 +181,14 @@ public class TelaLocutor extends javax.swing.JFrame {
 
             this.exibirMensagemSucesso("Locutor Alterado");
             this.limparCamposTela();
-            ListarLocutores listarLocutores = new ListarLocutores();
 
         } catch (SQLException ex) {
             Logger.getLogger(TelaLocutor.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.dispose();
         }
+        ListarLocutores c = new ListarLocutores();
+        c.setVisible(true);
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void exibirMensagemSucesso(String mensagem) {

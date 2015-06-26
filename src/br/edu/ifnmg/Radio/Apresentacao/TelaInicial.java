@@ -70,11 +70,12 @@ public class TelaInicial extends javax.swing.JFrame {
         mnMensalidade = new javax.swing.JMenuItem();
         mnAdminstradores = new javax.swing.JMenuItem();
         mnListarProgramas = new javax.swing.JMenuItem();
-        mnListarLocutor_Programa = new javax.swing.JMenuItem();
         mnValor = new javax.swing.JMenu();
         MnRendaMes = new javax.swing.JMenuItem();
         mnRendaAno = new javax.swing.JMenuItem();
         mnRalatorios = new javax.swing.JMenu();
+        mnRelatorioAnu = new javax.swing.JMenuItem();
+        mnRelatorioLocutores = new javax.swing.JMenuItem();
         mnGraficos = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -210,14 +211,6 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnListar.add(mnListarProgramas);
 
-        mnListarLocutor_Programa.setText("Listar Locutores & Programas");
-        mnListarLocutor_Programa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnListarLocutor_ProgramaActionPerformed(evt);
-            }
-        });
-        mnListar.add(mnListarLocutor_Programa);
-
         jMenuBar1.add(mnListar);
 
         mnValor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/saldo.jpg"))); // NOI18N
@@ -243,6 +236,23 @@ public class TelaInicial extends javax.swing.JFrame {
 
         mnRalatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/icone_relatorio.gif"))); // NOI18N
         mnRalatorios.setText("Relatórios");
+
+        mnRelatorioAnu.setText("Relatório Anunciantes");
+        mnRelatorioAnu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatorioAnuActionPerformed(evt);
+            }
+        });
+        mnRalatorios.add(mnRelatorioAnu);
+
+        mnRelatorioLocutores.setText("Relatório Locutores");
+        mnRelatorioLocutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRelatorioLocutoresActionPerformed(evt);
+            }
+        });
+        mnRalatorios.add(mnRelatorioLocutores);
+
         jMenuBar1.add(mnRalatorios);
 
         mnGraficos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/23_1.png"))); // NOI18N
@@ -322,11 +332,6 @@ public class TelaInicial extends javax.swing.JFrame {
         c.setVisible(true);
     }//GEN-LAST:event_mnRendaAnoActionPerformed
 
-    private void mnListarLocutor_ProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarLocutor_ProgramaActionPerformed
-        ListarPrograma_Locutor c = new ListarPrograma_Locutor();
-        c.setVisible(true);
-    }//GEN-LAST:event_mnListarLocutor_ProgramaActionPerformed
-
     private void mnListarProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarProgramasActionPerformed
         ListarProgramas c = new ListarProgramas();
         c.setVisible(true);
@@ -360,6 +365,16 @@ public class TelaInicial extends javax.swing.JFrame {
         ListarAnunciante c = new ListarAnunciante();
         c.setVisible(true);
     }//GEN-LAST:event_mnListarAnuncianteActionPerformed
+
+    private void mnRelatorioAnuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatorioAnuActionPerformed
+       RelatorioAnunciante c = new RelatorioAnunciante ();
+       c.setVisible(true);
+    }//GEN-LAST:event_mnRelatorioAnuActionPerformed
+
+    private void mnRelatorioLocutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRelatorioLocutoresActionPerformed
+        RelatorioLocutores c = new RelatorioLocutores ();
+         c.setVisible(true);
+    }//GEN-LAST:event_mnRelatorioLocutoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,10 +434,11 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnListarAnunciante;
     private javax.swing.JMenuItem mnListarAnuncios;
     private javax.swing.JMenuItem mnListarLocutor;
-    private javax.swing.JMenuItem mnListarLocutor_Programa;
     private javax.swing.JMenuItem mnListarProgramas;
     private javax.swing.JMenuItem mnMensalidade;
     private javax.swing.JMenu mnRalatorios;
+    private javax.swing.JMenuItem mnRelatorioAnu;
+    private javax.swing.JMenuItem mnRelatorioLocutores;
     private javax.swing.JMenuItem mnRendaAno;
     private javax.swing.JMenu mnValor;
     // End of variables declaration//GEN-END:variables

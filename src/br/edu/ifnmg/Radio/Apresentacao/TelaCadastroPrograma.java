@@ -269,6 +269,8 @@ public class TelaCadastroPrograma extends javax.swing.JFrame {
             Logger.getLogger(TelaLocutor.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.dispose();
+            ListarProgramas c = new ListarProgramas();
+            c.setVisible(true);
         }
 
 

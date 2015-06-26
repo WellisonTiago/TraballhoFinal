@@ -126,11 +126,11 @@ public class ListarAnuncios extends javax.swing.JFrame {
         PnListarAnunciosLayout.setHorizontalGroup(
             PnListarAnunciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnListarAnunciosLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(btExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btAlterar)
-                .addGap(32, 32, 32))
+                .addGap(73, 73, 73))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnListarAnunciosLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                 .addContainerGap())
@@ -144,14 +144,11 @@ public class ListarAnuncios extends javax.swing.JFrame {
                 .addComponent(lbListarAnuncios)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addGroup(PnListarAnunciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PnListarAnunciosLayout.createSequentialGroup()
-                        .addComponent(btAlterar)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnListarAnunciosLayout.createSequentialGroup()
-                        .addComponent(btExcluir)
-                        .addGap(37, 37, 37))))
+                .addGap(57, 57, 57)
+                .addGroup(PnListarAnunciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExcluir)
+                    .addComponent(btAlterar))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,6 +214,7 @@ public class ListarAnuncios extends javax.swing.JFrame {
             Logger.getLogger(ListarAnuncios.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.exibirDadosTabela();
+            this.dispose();
         }
     }//GEN-LAST:event_btAlterarActionPerformed
 

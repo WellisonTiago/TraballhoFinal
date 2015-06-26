@@ -54,7 +54,7 @@ public class Mensalidade {
         this.dataPagamento = DataPagamento;
     }
 
-    public double getValor() {
+    public double getvalor() {
         return valor;
     }
 

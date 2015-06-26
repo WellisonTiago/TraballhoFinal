@@ -51,7 +51,7 @@ public class MensalidadeDAO {
             comando.setDate(2, sqldat);
             comando.setInt(3, mensalidade.getIdAnunciante());
             comando.setInt(4, mensalidade.getIdDiretor_Dono());
-            comando.setDouble(5, mensalidade.getValor());
+            comando.setDouble(5, mensalidade.getvalor());
 
 //Executa o comando
             comando.execute();
@@ -92,7 +92,7 @@ public class MensalidadeDAO {
             comando.setDate(2, sqldat);
             comando.setInt(3, mensalidade.getIdAnunciante());
             comando.setInt(4, mensalidade.getIdDiretor_Dono());
-            comando.setDouble(5, mensalidade.getValor());
+            comando.setDouble(5, mensalidade.getvalor());
             comando.setInt(6, mensalidade.getIdMensalidade());
             comando.execute();
 //Persiste o comando no banco de dados

@@ -55,7 +55,7 @@ public class TelaCadastroMensalidade extends javax.swing.JFrame {
 
             this.txtDataPagamento.setText(mensalidade.getDataFormatadaPagamento());
             this.txtDataVencimento.setText(mensalidade.getDataFormatadaVencimento());
-            this.txtValor.setText(String.valueOf(mensalidade.getValor()));
+            this.txtValor.setText(String.valueOf(mensalidade.getvalor()));
             this.carregarComoBox();
             this.carregarComoBox2();
             this.btEditar.setVisible(true);
@@ -424,6 +424,8 @@ public class TelaCadastroMensalidade extends javax.swing.JFrame {
             Logger.getLogger(TelaCadastroMensalidade.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.dispose();
+            ListarMensalidades c = new ListarMensalidades();
+            c.setVisible(true);
         }
     }//GEN-LAST:event_btEditarActionPerformed
 

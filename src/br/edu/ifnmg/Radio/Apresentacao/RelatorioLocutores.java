@@ -8,19 +8,26 @@ package br.edu.ifnmg.Radio.Apresentacao;
 import br.edu.ifnmg.Radio.Entidade.Locutor;
 import br.edu.ifnmg.Radio.Negocio.LocutorBO;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.AbstractTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author WellisonTiago
  */
-public class ListarLocutores extends javax.swing.JFrame {
+public class RelatorioLocutores extends javax.swing.JFrame {
 
     List<Locutor> locutor;
     Locutor locutorselecionado = new Locutor();
@@ -29,7 +36,7 @@ public class ListarLocutores extends javax.swing.JFrame {
     /**
      * Creates new form MonstarLocutor
      */
-    public ListarLocutores() {
+    public RelatorioLocutores() {
         initComponents();
         this.exibirDadosTabela();
 
@@ -41,7 +48,7 @@ public class ListarLocutores extends javax.swing.JFrame {
             ModeloDadosLocutores modelo = new ModeloDadosLocutores();
             tlbLocutor.setModel(modelo);
         } catch (Exception ex) {
-            Logger.getLogger(ListarLocutores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RelatorioLocutores.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -70,8 +77,7 @@ public class ListarLocutores extends javax.swing.JFrame {
         lbLocutores = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tlbLocutor = new javax.swing.JTable();
-        btEditar = new javax.swing.JButton();
-        btExcuir = new javax.swing.JButton();
+        btRelatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,19 +109,10 @@ public class ListarLocutores extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tlbLocutor);
 
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/edit5.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
+        btRelatorio.setText("Relatório");
+        btRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
-            }
-        });
-
-        btExcuir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/icone_lixeira.png"))); // NOI18N
-        btExcuir.setText("Excluir");
-        btExcuir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcuirActionPerformed(evt);
+                btRelatorioActionPerformed(evt);
             }
         });
 
@@ -125,12 +122,10 @@ public class ListarLocutores extends javax.swing.JFrame {
             pnMontrarLocutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
             .addComponent(lbLocutores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnMontrarLocutorLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(btExcuir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMontrarLocutorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btRelatorio)
+                .addGap(331, 331, 331))
         );
         pnMontrarLocutorLayout.setVerticalGroup(
             pnMontrarLocutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,11 +134,9 @@ public class ListarLocutores extends javax.swing.JFrame {
                 .addComponent(lbLocutores)
                 .addGap(65, 65, 65)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addGroup(pnMontrarLocutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btExcuir)
-                    .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79))
+                .addGap(61, 61, 61)
+                .addComponent(btRelatorio)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,62 +153,28 @@ public class ListarLocutores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        // TODO add your handling code here:
+    private void btRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelatorioActionPerformed
+       try {
+            String arquivoRelatorio = System.getProperty("user.dir")
+                    + "/Relatorios/RelatorioLocutores.jasper";
+               
+            Map<String, Object> paramentros = new HashMap<String, Object>();
 
-        try {
-            LocutorBO locutorBO = new LocutorBO();
-            int linhaselecionada = this.tlbLocutor.getSelectedRow();
-            locutorselecionado = this.locutor.get(linhaselecionada);
-            TelaLocutor telaLocutor = new TelaLocutor(locutorselecionado,"editar");
-            telaLocutor.setVisible(true);
-            this.exibirDadosTabela();
+            JRBeanCollectionDataSource fonteDados
+                    = new JRBeanCollectionDataSource(this.locutor);
 
-            locutorBO.alterar(locutorselecionado);
-            this.exibirDadosTabela();
-        
-        } catch (ArrayIndexOutOfBoundsException aiobe) {
-            String mensagem = "Nenhum funcionario selecionado";
-            String titulo = "Erro";
-            exibirMensagemErro(mensagem, titulo);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarLocutores.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            this.exibirDadosTabela();
+            JasperPrint relatorioGerado = JasperFillManager.fillReport(arquivoRelatorio, paramentros, fonteDados);
+
+            JasperViewer telaExibicaoRelatorio
+                    = new JasperViewer(relatorioGerado, false);
+            telaExibicaoRelatorio.setTitle("Relatório de Locutores");
+            telaExibicaoRelatorio.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ListarAnunciante.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao exibir relatório.", "Erro", JOptionPane.ERROR_MESSAGE);
+
         }
-      this.dispose();
-    }//GEN-LAST:event_btEditarActionPerformed
-
-    private void btExcuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcuirActionPerformed
-        // TODO add your handling code here:
-        try {
-            linhaselecionada = this.tlbLocutor.getSelectedRow();
-            Locutor locutorselecionado = this.locutor.get(linhaselecionada);
-            String mensagem = "Deseja excluir " + locutorselecionado.getNome() + " ?";
-            String titulo = "Excluir Locutor";
-            int resultado = JOptionPane.showConfirmDialog(this, mensagem, titulo, JOptionPane.YES_NO_CANCEL_OPTION);
-            if (resultado == JOptionPane.YES_OPTION) {
-                LocutorBO locutorBO = new LocutorBO();
-                try {
-                    locutorBO.excluir(locutorselecionado);
-                    this.exibirDadosTabela();
-
-                } catch (SQLException e) {
-                    String mensagemerro = "Houve um erro ao excluir Locutor";
-                    String tituloerro = "Erro excluir locutor";
-                    this.exibirMensagemErro(mensagemerro, tituloerro);
-                }
-            } else if (resultado == JOptionPane.NO_OPTION) {
-
-            }
-        } catch (ArrayIndexOutOfBoundsException aiobe) {
-            String mensagem = "Nenhum locutor selecionado";
-            String titulo = "Erro";
-            exibirMensagemErro(mensagem, titulo);
-        } finally {
-            this.exibirDadosTabela();
-        }
-    }//GEN-LAST:event_btExcuirActionPerformed
+    }//GEN-LAST:event_btRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,14 +193,18 @@ public class ListarLocutores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioLocutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -250,7 +213,7 @@ public class ListarLocutores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarLocutores().setVisible(true);
+                new RelatorioLocutores().setVisible(true);
             }
         });
     }
@@ -291,8 +254,7 @@ public class ListarLocutores extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcuir;
+    private javax.swing.JButton btRelatorio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbLocutores;
     private javax.swing.JInternalFrame pnMontrarLocutor;

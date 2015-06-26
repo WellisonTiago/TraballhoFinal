@@ -192,13 +192,13 @@ public class ValorPorAnoMes extends javax.swing.JFrame {
             Mensalidade meM = mensalidadeM.get(rowIndex);
             Mensalidade meS = mensalidadeS.get(rowIndex);
              if (columnIndex == 0) {
-                return meA.getValor();
+                return meA.getvalor();
             }  if (columnIndex == 1) {
-                return meM.getValor();
+                return meM.getvalor();
             }
              
              else {
-                return meS.getValor();
+                return meS.getvalor();
             }
 
         }

@@ -366,6 +366,9 @@ public class TelaCadastroAnuncio extends javax.swing.JFrame {
             Logger.getLogger(TelaCadastroAnuncio.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.dispose();
+            // TODO add your handling code here
+            ListarAnuncios c = new ListarAnuncios();
+            c.setVisible(true);
         }
     }//GEN-LAST:event_btAlterarActionPerformed
 
@@ -373,7 +376,7 @@ public class TelaCadastroAnuncio extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-     
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="954cabf5-07a4-4039-9264-3a4bb9477a09">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idMensalidade" class="java.lang.Integer"/>
+	<field name="vencimento" class="java.util.Date"/>
+	<field name="dataPagamento" class="java.util.Date"/>
+	<field name=" valor" class="java.lang.Integer"/>
+	<field name="idAnunciante" class="java.lang.Integer"/>
+	<field name="idDiretor_Dono" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2ef51a4b-db1c-4f27-b57d-c22c5c138f81"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="279c1f6b-4616-46b0-a714-7ed3009f1284"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mensalidades]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="aef8182d-42f3-4dd1-9f80-881de20f3311"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório Mensalidades]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="1b92f21d-c793-44f0-b531-ae0733fbd4bf"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" uuid="d70a9a73-636b-49cb-9f7b-fe7476b2490e"/>
+				<text><![CDATA[idMensalidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" uuid="fe3e51a7-3c0a-4eb0-9c0a-3a15b29c9274"/>
+				<text><![CDATA[vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" uuid="310ef367-4d1b-4c7c-aa12-f0762f0ab3a6"/>
+				<text><![CDATA[dataPagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="92" height="20" uuid="fbea8b7b-3667-44d9-afe0-8784b293737b"/>
+				<text><![CDATA[idAnunciante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" uuid="ec000bff-6804-4745-890d-0601ec315ec2"/>
+				<text><![CDATA[idDiretor_Dono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="1" width="100" height="20" uuid="a1a75eee-83e1-40c4-ac59-de8336451bc3"/>
+				<text><![CDATA[ valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="73b487f8-41bf-4fdd-b4de-f31b34887222"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="8c4cb380-0657-4688-ae7a-885bbeacc02c"/>
+				<textFieldExpression><![CDATA[$F{idMensalidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="4d53880a-c6a1-4b60-a3d5-13cf1058e8cf"/>
+				<textFieldExpression><![CDATA[$F{vencimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="20" uuid="930ca2a6-8f2a-471b-b621-3ded8f139d70"/>
+				<textFieldExpression><![CDATA[$F{dataPagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="92" height="20" uuid="d822fc79-a7e2-4f5e-ab46-af4adc50e50a"/>
+				<textFieldExpression><![CDATA[$F{idAnunciante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="bb363546-c897-4e0d-8eba-5ad29a14b690"/>
+				<textFieldExpression><![CDATA[$F{idDiretor_Dono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="64" height="20" uuid="effbea85-7f77-4e57-9b44-0baa747616d8"/>
+				<textFieldExpression><![CDATA[$F{ valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="d0bfd3be-f6e8-4ac9-9dbd-98d8e8e6bd76"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="b7d900bd-f37a-4fc1-9f71-510affecd5d9"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="77477652-6f3c-443f-980e-6d90b273913f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -69,7 +69,7 @@ public class ListarMensalidades extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblMensalidades);
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/edit5.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/icone_lixeira.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class ListarMensalidades extends javax.swing.JFrame {
             }
         });
 
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/save31.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/edit5.png"))); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +90,7 @@ public class ListarMensalidades extends javax.swing.JFrame {
         PnListarMensalidadeLayout.setHorizontalGroup(
             PnListarMensalidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnListarMensalidadeLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addComponent(btExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,7 +105,7 @@ public class ListarMensalidades extends javax.swing.JFrame {
                 .addComponent(lbListarMensalidades)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(PnListarMensalidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btExcluir)
                     .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,7 +180,8 @@ public class ListarMensalidades extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ListarMensalidades.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            this.exibirDadosTabela();
+            this.dispose();
+            
         }
     }//GEN-LAST:event_btEditarActionPerformed
    private void exibirDadosTabela() {
@@ -283,7 +284,7 @@ public class ListarMensalidades extends javax.swing.JFrame {
             } else if (columnIndex == 1) {
                 return anunciante.getNome();
             } else if (columnIndex == 2) {
-                return mensalidade.getValor();
+                return mensalidade.getvalor();
             } else if (columnIndex == 3) {
                 return format.format(mensalidade.getDataPagamento());
 

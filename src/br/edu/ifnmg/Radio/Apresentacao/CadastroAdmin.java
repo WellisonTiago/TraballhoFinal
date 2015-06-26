@@ -27,7 +27,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
 
     Admin admin;
     String codigoHashFinal;
-    String Texto ;
+    String Texto;
 
     /**
      * Creates new form CadastroAdmin
@@ -42,7 +42,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
             this.btAdcionar.setVisible(true);
         } else {
             this.txtNome.setText(admin.getnome());
-           // this.txtSenha.setText(admin.getSenha());
+            // this.txtSenha.setText(admin.getSenha());
             this.btEditar.setVisible(true);
             this.lbEditar.setVisible(true);
             this.lbAdmin.setVisible(false);
@@ -62,7 +62,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
 
     private void lerDadosTela() throws ParseException, NoSuchAlgorithmException {
         admin = new Admin();
-         Texto = this.txtSenha.getText().trim();
+        Texto = this.txtSenha.getText().trim();
         Codificação codificação = new Codificação();
         admin.setNome(txtNome.getText().trim());
         try {
@@ -246,7 +246,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
         if (tex.equals(texto)) {
 
             try {
-                lerDadosTela();
+                //lerDadosTela();
                 adminBO.criar(admin);
                 System.out.println("Adminstrador cadastrado com sucesso!");
                 String mensagem = "Adminstrador cadastrado com sucesso!";
@@ -280,7 +280,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
 
         AdminBO adminBO = new AdminBO();
-         Texto = txtSenha.getText().trim();
+        Texto = txtSenha.getText().trim();
         String tex = confirSenha.getText().trim();
         Codificação codificação = new Codificação();
         try {
@@ -304,7 +304,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
             try {
 
                 /*this.admin.setNome(txtNome.getText());
-                this.admin.setSenha(texto);*/
+                 this.admin.setSenha(texto);*/
                 lerDadosTela();
                 adminBO.alterar(this.admin);
 
@@ -319,14 +319,20 @@ public class CadastroAdmin extends javax.swing.JFrame {
                 Logger.getLogger(CadastroAdmin.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 this.dispose();
+                ListarAdminstradores c = new ListarAdminstradores();
+                c.setVisible(true);
             }
+            ListarAdminstradores c = new ListarAdminstradores();
+            c.setVisible(true);
+            this.dispose();
         } else {
             String mensagem = "Senha  incorreta";
             this.exibirMensagemErro(mensagem);
             System.err.println("Senha não confirmada");
+            
         }
-    
-   
+
+      // this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
 
     /**
@@ -356,8 +362,6 @@ public class CadastroAdmin extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        
-      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

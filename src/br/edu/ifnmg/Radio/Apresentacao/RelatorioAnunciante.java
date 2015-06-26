@@ -26,7 +26,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author WellisonTiago
  */
-public class ListarAnunciante extends javax.swing.JFrame {
+public class RelatorioAnunciante extends javax.swing.JFrame {
 
     List<Anunciante> anunciantes;
     Anunciante anuncianteSelecionado = new Anunciante ();
@@ -34,7 +34,7 @@ public class ListarAnunciante extends javax.swing.JFrame {
     /**
      * Creates new form ListarAnunciante
      */
-    public ListarAnunciante() {
+    public RelatorioAnunciante() {
         initComponents();
         exibirDadosTabela();
     }
@@ -45,7 +45,7 @@ public class ListarAnunciante extends javax.swing.JFrame {
             ModeloDadosAnunciantes modelo = new ModeloDadosAnunciantes();
             tblAnunciantes.setModel(modelo);
         } catch (Exception ex) {
-            Logger.getLogger(ListarAnunciante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RelatorioAnunciante.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -74,8 +74,7 @@ public class ListarAnunciante extends javax.swing.JFrame {
         txtListarAnunciante = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnunciantes = new javax.swing.JTable();
-        btExcluir = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
+        btRelatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,19 +98,10 @@ public class ListarAnunciante extends javax.swing.JFrame {
         tblAnunciantes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblAnunciantes);
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/icone_lixeira.png"))); // NOI18N
-        btExcluir.setText("Excluir");
-        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btRelatorio.setText("Relatorio");
+        btRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirActionPerformed(evt);
-            }
-        });
-
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/edit5.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
+                btRelatorioActionPerformed(evt);
             }
         });
 
@@ -121,12 +111,10 @@ public class ListarAnunciante extends javax.swing.JFrame {
             pnListarAnuncianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
             .addComponent(txtListarAnunciante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnListarAnuncianteLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnListarAnuncianteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(321, 321, 321))
         );
         pnListarAnuncianteLayout.setVerticalGroup(
             pnListarAnuncianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,11 +123,9 @@ public class ListarAnunciante extends javax.swing.JFrame {
                 .addComponent(txtListarAnunciante)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(pnListarAnuncianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(btRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,60 +142,30 @@ public class ListarAnunciante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        // TODO add your handling code here:
-        try {
-            int linhaselecionada = this.tblAnunciantes.getSelectedRow();
-            Anunciante Anuncianteselecionado = this.anunciantes.get(linhaselecionada);
-            String mensagem = "Deseja excluir " + Anuncianteselecionado.getNome() + " ?";
-            String titulo = "Excluir Anunciante";
-            int resultado = JOptionPane.showConfirmDialog(this, mensagem, titulo, JOptionPane.YES_NO_CANCEL_OPTION);
-            if (resultado == JOptionPane.YES_OPTION) {
-                AnuncianteBO anuncianteBO = new AnuncianteBO();
-                try {
-                    anuncianteBO.excluir(Anuncianteselecionado);
-                    this.exibirDadosTabela();
+    private void btRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelatorioActionPerformed
+        
+     
+    try {
+            String arquivoRelatorio = System.getProperty("user.dir")
+                    + "/Relatorios/RelatorioAnu.jasper";
+               
+            Map<String, Object> paramentros = new HashMap<String, Object>();
 
-                } catch (SQLException e) {
-                    String mensagemerro = "Houve um erro ao excluir Anunciante";
-                    String tituloerro = "Erro excluir Anunciante";
-                    this.exibirMensagemErro(mensagemerro, tituloerro);
-                }
-            } else if (resultado == JOptionPane.NO_OPTION) {
+            JRBeanCollectionDataSource fonteDados
+                    = new JRBeanCollectionDataSource(this.anunciantes);
 
-            }
-        } catch (ArrayIndexOutOfBoundsException aiobe) {
-            String mensagem = "Nenhum Anunciante selecionado";
-            String titulo = "Erro";
-            exibirMensagemErro(mensagem, titulo);
-        } finally {
-            this.exibirDadosTabela();
-        }
-    }//GEN-LAST:event_btExcluirActionPerformed
+            JasperPrint relatorioGerado = JasperFillManager.fillReport(arquivoRelatorio, paramentros, fonteDados);
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-      try {
-            AnuncianteBO anuncianteBO = new AnuncianteBO();
-            int linhaselecionada = this.tblAnunciantes.getSelectedRow();
-            anuncianteSelecionado = this.anunciantes.get(linhaselecionada);
-            TelaCadastroAnunciante telaCadastroAnunciante = new TelaCadastroAnunciante(anuncianteSelecionado,"editar");
-            telaCadastroAnunciante.setVisible(true);
-            this.exibirDadosTabela();
-
-            anuncianteBO.alterar(anuncianteSelecionado);
-        } catch (ArrayIndexOutOfBoundsException aiobe) {
-            String mensagem = "Nenhum Anunciante selecionado";
-            String titulo = "Erro";
-            exibirMensagemErro(mensagem, titulo);
-        } catch (SQLException ex) {
+            JasperViewer telaExibicaoRelatorio
+                    = new JasperViewer(relatorioGerado, false);
+            telaExibicaoRelatorio.setTitle("Relatório de Anunciantes");
+            telaExibicaoRelatorio.setVisible(true);
+        } catch (JRException ex) {
             Logger.getLogger(ListarAnunciante.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            this.exibirDadosTabela();
+            JOptionPane.showMessageDialog(this, "Erro ao exibir relatório.", "Erro", JOptionPane.ERROR_MESSAGE);
+
         }
-                                            
-     this.dispose();
-    
-    }//GEN-LAST:event_btEditarActionPerformed
+    }//GEN-LAST:event_btRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,27 +184,27 @@ public class ListarAnunciante extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnunciante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarAnunciante().setVisible(true);
+                new RelatorioAnunciante().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btRelatorio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JInternalFrame pnListarAnunciante;
     private javax.swing.JTable tblAnunciantes;

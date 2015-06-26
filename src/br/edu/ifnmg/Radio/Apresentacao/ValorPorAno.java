@@ -181,9 +181,9 @@ public class ValorPorAno extends javax.swing.JFrame {
             Mensalidade men = mensalidades.get(rowIndex);
             Mensalidade mens = mensalidade.get(rowIndex);
              if (columnIndex == 0) {
-                return men.getValor();
+                return men.getvalor();
             } else {
-                return mens.getValor();
+                return mens.getvalor();
             }
 
         }

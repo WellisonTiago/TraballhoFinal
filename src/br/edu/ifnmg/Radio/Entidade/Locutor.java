@@ -11,23 +11,23 @@ package br.edu.ifnmg.Radio.Entidade;
  */
 public class Locutor {
     
-   private int IdLocutor;
-   private String Nome;
+   private int idLocutor;
+   private String nome;
 
     public int getIdLocutor() {
-        return IdLocutor;
+        return idLocutor;
     }
 
     public void setIdLocutor(int IdLocutor) {
-        this.IdLocutor = IdLocutor;
+        this.idLocutor = IdLocutor;
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String Nome) {
-        this.Nome = Nome;
+        this.nome = Nome;
     }
    
    

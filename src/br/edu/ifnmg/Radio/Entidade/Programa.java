@@ -12,7 +12,7 @@ package br.edu.ifnmg.Radio.Entidade;
 public class Programa {
     
     private int idPrograma ;
-    private String  Nome;
+    private String  nome;
     private int idAdim; 
 
     public int getIdPrograma() {
@@ -24,11 +24,11 @@ public class Programa {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String Nome) {
-        this.Nome = Nome;
+        this.nome = Nome;
     }
 
     public int getIdAdim() {

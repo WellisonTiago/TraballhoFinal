@@ -24,7 +24,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnListarPrograma" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="pnListarPrograma" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -36,6 +40,7 @@
   <SubComponents>
     <Container class="javax.swing.JInternalFrame" name="pnListarPrograma">
       <Properties>
+        <Property name="layer" type="int" value="5"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
 
@@ -47,9 +52,9 @@
                   <Component id="btExluir" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btEditar" min="-2" pref="106" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
-              <Component id="jScrollPane1" alignment="0" pref="765" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="745" max="32767" attributes="0"/>
               <Component id="lbListarPrograma" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -60,17 +65,12 @@
                   <Component id="lbListarPrograma" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="261" max="-2" attributes="0"/>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btExluir" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btEditar" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btExluir" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btEditar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,7 +109,7 @@
         <Component class="javax.swing.JButton" name="btExluir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/edu/ifnmg/Radio/Apresentacao/imagens/save31.png"/>
+              <Image iconType="3" name="/br/edu/ifnmg/Radio/Apresentacao/imagens/icone_lixeira.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>

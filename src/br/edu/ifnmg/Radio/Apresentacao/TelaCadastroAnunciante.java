@@ -346,7 +346,6 @@ public class TelaCadastroAnunciante extends javax.swing.JFrame {
 
             this.exibirMensagemSucesso("Anunciante Alterado");
             this.limparCamposTela();
-            ListarAnunciante listarAnunciante = new ListarAnunciante();
 
         } catch (ParseException ex) {
             Logger.getLogger(TelaLocutor.class.getName()).log(Level.SEVERE, null, ex);
@@ -359,7 +358,7 @@ public class TelaCadastroAnunciante extends javax.swing.JFrame {
     }
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
 
-      // TODO add your handling code here:
+        // TODO add your handling code here:
         try {
 
             AnuncianteBO anuncianteBO = new AnuncianteBO();
@@ -373,7 +372,7 @@ public class TelaCadastroAnunciante extends javax.swing.JFrame {
             this.anunciante.setRua(txtRua.getText());
             String Numero = txtNum.getText().trim();
             anunciante.setNumResidencia(Integer.parseInt(Numero));
-            
+
             anuncianteBO.alterar(this.anunciante);
 
             this.exibirMensagemSucesso("Anunciante Alterado");
@@ -383,14 +382,15 @@ public class TelaCadastroAnunciante extends javax.swing.JFrame {
             Logger.getLogger(TelaLocutor.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.dispose();
+            ListarAnunciante c = new ListarAnunciante();
+            c.setVisible(true);
         }
+
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
-
-  
 
     /**
      * @param args the command line arguments
@@ -420,7 +420,6 @@ public class TelaCadastroAnunciante extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

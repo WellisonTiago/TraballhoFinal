@@ -89,11 +89,11 @@ public class ListarAdminstradores extends javax.swing.JFrame {
         pnListarAdminLayout.setHorizontalGroup(
             pnListarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnListarAdminLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(53, 53, 53)
                 .addComponent(btExcuir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btEditar)
-                .addGap(61, 61, 61))
+                .addGap(58, 58, 58))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
             .addComponent(lbAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -104,11 +104,11 @@ public class ListarAdminstradores extends javax.swing.JFrame {
                 .addComponent(lbAdmin)
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(34, 34, 34)
                 .addGroup(pnListarAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btExcuir)
                     .addComponent(btEditar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,8 +172,9 @@ public class ListarAdminstradores extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastroAdmin.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            this.exibirDadosTabela();
+             this.dispose();
         }
+      this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
     private void carregarAdmin() throws SQLException {
         AdminBO adminBO = new AdminBO();
