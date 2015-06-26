@@ -246,7 +246,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
         if (tex.equals(texto)) {
 
             try {
-                //lerDadosTela();
+                lerDadosTela();
                 adminBO.criar(admin);
                 System.out.println("Adminstrador cadastrado com sucesso!");
                 String mensagem = "Adminstrador cadastrado com sucesso!";

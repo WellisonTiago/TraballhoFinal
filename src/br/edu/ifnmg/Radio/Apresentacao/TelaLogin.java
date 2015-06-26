@@ -51,6 +51,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WT Radio");
+        setMaximizedBounds(new java.awt.Rectangle(6, 6, 6, 6));
 
         lbImagemLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/Radio/Apresentacao/imagens/personal-256.png"))); // NOI18N
 

@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaLocutor extends javax.swing.JFrame {
 
-    private Locutor locutor;
+    private Locutor locutor = new Locutor();
 
     /**
      * Creates new form TelaLocutor
@@ -147,25 +147,33 @@ public class TelaLocutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void lerDadosTela() throws ParseException {
+        locutor = new Locutor();
 
+        locutor.setNome(txtNome.getText().trim());
+       
+    }
 
     private void tbAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbAdicionarActionPerformed
         // TODO add your handling code here:
         LocutorBO locutorBO = new LocutorBO();
-
+             
         try {
-            locutorBO.criar(locutor);
+            lerDadosTela();
+            locutorBO.criar(this.locutor);
             System.out.println("Locutor cadastrado com sucesso!");
             String mensagem = "Locutor cadastrado com sucesso!";
             String titulo = "Cadastro de Locutor";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.INFORMATION_MESSAGE);
-            this.limparCamposTela();
+           // this.limparCamposTela();
         } catch (SQLException e) {
             //System.err.println(e.getMessage());
 
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaLocutor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            String mensagem = "Erro desconhecido. Entre em contato com o administrador do sistema.";
-            this.exibirMensagemErro(mensagem);
+        String mensagem = "Erro desconhecido. Entre em contato com o administrador do sistema.";
+        this.exibirMensagemErro(mensagem);
         }
     }//GEN-LAST:event_tbAdicionarActionPerformed
 
