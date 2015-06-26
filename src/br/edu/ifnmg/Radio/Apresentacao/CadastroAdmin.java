@@ -262,7 +262,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
             }
 
         } else {
-            String mensagem = "Senha  incorreta";
+            String mensagem = "Senha  não confere com a confirmação ";
             this.exibirMensagemErro(mensagem);
             System.err.println("Senha não confirmada");
 
