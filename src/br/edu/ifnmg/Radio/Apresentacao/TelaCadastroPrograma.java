@@ -45,7 +45,7 @@ public class TelaCadastroPrograma extends javax.swing.JFrame {
             this.btAlterar.setVisible(true);
             this.lbAlterar.setVisible(true);
             this.btAdcionar.setVisible(false);
-            this.lbCadastrarPrograma.setVisible(true);
+            this.lbCadastrarPrograma.setVisible(false);
             this.carregarComoBox();
         }
     }
@@ -65,7 +65,7 @@ public class TelaCadastroPrograma extends javax.swing.JFrame {
         lbAlterar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastraer Programa");
+        setTitle("Cadastrar Programa");
 
         lbCadastrarPrograma.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbCadastrarPrograma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
